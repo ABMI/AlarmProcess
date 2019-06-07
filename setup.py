@@ -6,7 +6,7 @@ setup(
         version="1.0",
         description="",
         author="DongsuPark",
-        executables = [Executable("Crolling.py")]
+        executables = [Executable("Crawling.py")]
 )
 
 

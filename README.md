@@ -1,11 +1,11 @@
-# Crolling을 이용한 Alarm Process 개발
+# Crawling을 이용한 Alarm Process 개발
 
 ## cx_Freeze 설치 (.py ->.exe )
 #### https://www.lfd.uci.edu/~gohlke/pythonlibs/#cx_freeze
 #### cmd > pip install 다운로드 파일명.확장자
 
 ## Code 수정 
-#### Crolling.py
+#### Crawling.py
 <pre>
 gmail_user = ''  # 실제 google 로그인할 때 쓰는 ID
 gmail_pw = ''  # 실제 google 로그인할 때 쓰는 Password
