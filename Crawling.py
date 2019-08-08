@@ -12,6 +12,7 @@ def request(url):
    byte_data = response.read()
    text_data = byte_data.decode('utf-8')
    return text_data
+
 def get_newNotice():
     URL = 'https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA020002000100'
 
@@ -38,7 +39,7 @@ def get_newNotice():
     return notice
 
 def UpdateLogFile(notice):
-   LogFile = {'Log':get_newNotice()}
+   LogFile = {'Log':notice}
    sendEmail = []
    for item in LogFile.keys():
       FileName = os.getcwd()+'\\' + item + '.txt'
@@ -52,6 +53,12 @@ def UpdateLogFile(notice):
          file.close()
 
          newNotice = set(LogFile[item].keys()) - set(content.keys())
+
+         resultlist = []
+         for s in newNotice:
+            if "수가파일" in s:
+               resultlist.append(s)
+         newNotice = set(resultlist)
 
          for info in newNotice:
             sendEmail.append(item + ': ' +  info + ' '+ LogFile[item][info])
@@ -102,7 +109,6 @@ def EmailService(sendEmail,gmail_user,gmail_pw,from_addr,to_addr):
 def main():
    notice = get_newNotice()
    sendEmail = UpdateLogFile(notice)
-
    ## 작성해 주세요
    gmail_user = ''  # 실제 google 로그인할 때 쓰는 ID
    gmail_pw = ''  # 실제 google 로그인할 때 쓰는 Password
